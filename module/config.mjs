@@ -21,11 +21,17 @@ FOURSTAT.traitPolarity = {
   negative: "FOURSTAT.Trait.Negative"
 };
 
-FOURSTAT.thresholds = {
-  4: "FOURSTAT.Threshold.Easy",
-  6: "FOURSTAT.Threshold.Hard",
-  9: "FOURSTAT.Threshold.Extreme"
-};
+FOURSTAT.thresholds = [
+  { value: 1, label: "" },
+  { value: 2, label: "" },
+  { value: 3, label: "" },
+  { value: 4, label: "FOURSTAT.Threshold.Easy" },
+  { value: 5, label: "" },
+  { value: 6, label: "FOURSTAT.Threshold.Hard" },
+  { value: 7, label: "" },
+  { value: 8, label: "" },
+  { value: 9, label: "FOURSTAT.Threshold.Extreme" }
+];
 
 FOURSTAT.diceFace = 6;
 

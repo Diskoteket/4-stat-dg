@@ -6,8 +6,10 @@
   <div class="form-group">
     <label>{{localize 'FOURSTAT.Roll.Threshold'}}</label>
     <select name="threshold">
-      {{#each thresholds as |label key|}}
-      <option value="{{key}}">{{key}} — {{localize label}}</option>
+      {{#each thresholds as |t|}}
+      <option value="{{t.value}}" {{#if (eq t.value 4)}}selected{{/if}}>
+        {{t.value}}{{#if t.label}} — {{localize t.label}}{{/if}}
+      </option>
       {{/each}}
     </select>
   </div>
