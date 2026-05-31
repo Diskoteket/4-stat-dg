@@ -93,7 +93,7 @@ export class CharacterSheet extends ActorSheet {
               const traitId = form.trait?.value || "";
               const label = form.label?.value?.trim() ?? "";
               const trait = this.actor.items.get(traitId);
-              const traitBonus = trait ? 1 : 0;
+              const traitBonus = trait ? (trait.system.polarity === "negative" ? -1 : 1) : 0;
               const result = await this.actor.rollStat(statKey, { threshold, traitBonus, label });
               resolve(result);
             }

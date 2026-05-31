@@ -16,7 +16,7 @@
     <select name="trait">
       <option value="">{{localize 'FOURSTAT.Roll.NoTrait'}}</option>
       {{#each traits as |t|}}
-      <option value="{{t.id}}">{{t.name}} — {{#if (eq t.system.polarity "positive")}}{{localize 'FOURSTAT.Trait.Positive'}}{{else}}{{localize 'FOURSTAT.Trait.Negative'}}{{/if}}</option>
+      <option value="{{t.id}}">{{t.name}} — {{#if (eq t.system.polarity "positive")}}+1{{else}}−1{{/if}}</option>
       {{/each}}
     </select>
   </div>
