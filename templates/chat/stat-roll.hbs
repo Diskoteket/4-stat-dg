@@ -43,6 +43,9 @@
         <button type="button" class="fourstat-action" data-action="apply-stress" data-actor-id="{{actorId}}" data-amount="{{stressDice}}">
           + {{stressDice}} {{localize 'FOURSTAT.Stress.Apply'}}
         </button>
+        <button type="button" class="fourstat-action" data-action="protect-with-bond" data-actor-id="{{actorId}}" data-amount="{{stressDice}}">
+          {{localize 'FOURSTAT.Bond.ProtectButton'}}
+        </button>
       </div>
       {{/if}}
     {{/unless}}

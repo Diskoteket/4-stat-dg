@@ -69,6 +69,22 @@ export class FourStatActor extends Actor {
     return result;
   }
 
+  async protectWithBond(bondId, amount) {
+    const bond = this.items.get(bondId);
+    if (!bond || bond.type !== "bond") return false;
+    const value = bond.system.value ?? 0;
+    if (value < amount) {
+      ui.notifications?.warn(game.i18n.format("FOURSTAT.Bond.ProtectInsufficient", {
+        bond: bond.name,
+        value,
+        amount
+      }));
+      return false;
+    }
+    await bond.update({ "system.value": value - amount });
+    return true;
+  }
+
   async takeStress(amount = 1, { permanent = false } = {}) {
     const field = permanent ? "permanent" : "temporary";
     const current = this.system.stress?.[field] ?? 0;

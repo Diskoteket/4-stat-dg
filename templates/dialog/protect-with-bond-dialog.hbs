@@ -1,0 +1,19 @@
+<form>
+  <p>{{localize 'FOURSTAT.Bond.ProtectIntro' stress=stressAmount}}</p>
+  <div class="form-group">
+    <label>{{localize 'FOURSTAT.Bond.ProtectChoose'}}</label>
+    <select name="bondId">
+      {{#each bonds as |bond|}}
+      <option value="{{bond.id}}">{{bond.name}} ({{localize 'FOURSTAT.Bond.Value'}}: {{bond.system.value}})</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label>{{localize 'FOURSTAT.Bond.ProtectAmount'}}</label>
+    <select name="amount">
+      <option value="1">1</option>
+      {{#if allowTwo}}<option value="2">2</option>{{/if}}
+    </select>
+    <small>{{localize 'FOURSTAT.Bond.ProtectHint'}}</small>
+  </div>
+</form>

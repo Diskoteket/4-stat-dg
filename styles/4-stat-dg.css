@@ -315,7 +315,24 @@
 }
 
 .fourstat-chat .chat-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
   margin-top: 6px;
+}
+
+.fourstat-chat .chat-actions button {
+  flex: 1 1 auto;
+}
+
+.fourstat-chat .chat-resolution {
+  margin-top: 6px;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.06);
+  border-left: 3px solid #4a0d0d;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-style: italic;
 }
 
 .fourstat-chat .chat-note {
