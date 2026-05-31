@@ -58,7 +58,8 @@
   "FOURSTAT.Willpower.Spend": "Spend 1 Willpower",
   "FOURSTAT.Willpower.Restore": "Restore 1 Willpower",
   "FOURSTAT.Willpower.SpendForBonus": "Spend 1 Willpower for +1 die",
-  "FOURSTAT.Willpower.SpendForStress": "Spend 1 Willpower to remove 1 Stress die before rolling",
+  "FOURSTAT.Willpower.SpendForStress": "Spend Willpower to remove Stress dice before rolling",
+  "FOURSTAT.Stress.TemporaryAvailable": "Temporary Stress",
   "FOURSTAT.Willpower.Available": "available",
   "FOURSTAT.Willpower.NoneLeft": "No Willpower left.",
 

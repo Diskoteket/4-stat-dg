@@ -124,11 +124,14 @@ export class CharacterSheet extends ActorSheet {
     }
     const willpower = this.actor.system.willpower?.value ?? 0;
     const temporaryStress = this.actor.system.stress?.temporary ?? 0;
-    const canSpend = willpower > 0 && temporaryStress > 0;
+    const maxSpend = Math.min(willpower, temporaryStress);
+    const canSpend = maxSpend > 0;
 
     const content = await renderTemplate("systems/4-stat-dg/templates/dialog/stress-roll-dialog.hbs", {
       stressPool: this.actor.stressPool,
       willpower,
+      temporaryStress,
+      maxSpend,
       canSpend
     });
 
@@ -140,10 +143,13 @@ export class CharacterSheet extends ActorSheet {
           roll: {
             label: game.i18n.localize("FOURSTAT.Stress.Roll"),
             callback: async (html) => {
-              const spendWillpower = html[0].querySelector("form")?.spendWillpower?.checked ?? false;
-              if (spendWillpower) {
-                await this.actor.spendWillpower(1);
-                await this.actor.clearStress(1);
+              const willpowerSpend = Math.max(0, Math.min(
+                maxSpend,
+                Number(html[0].querySelector("[name='willpowerSpend']")?.value ?? 0)
+              ));
+              if (willpowerSpend > 0) {
+                await this.actor.spendWillpower(willpowerSpend);
+                await this.actor.clearStress(willpowerSpend);
               }
               const result = await this.actor.rollStress();
               if (result?.gainsPermanent) {

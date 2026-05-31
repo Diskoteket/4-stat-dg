@@ -58,7 +58,8 @@
   "FOURSTAT.Willpower.Spend": "Spendera 1 Willpower",
   "FOURSTAT.Willpower.Restore": "Återfå 1 Willpower",
   "FOURSTAT.Willpower.SpendForBonus": "Spendera 1 Willpower för +1 tärning",
-  "FOURSTAT.Willpower.SpendForStress": "Spendera 1 Willpower för att ta bort 1 Stress-tärning innan slaget",
+  "FOURSTAT.Willpower.SpendForStress": "Spendera Willpower för att ta bort Stress-tärningar innan slaget",
+  "FOURSTAT.Stress.TemporaryAvailable": "Tillfällig Stress",
   "FOURSTAT.Willpower.Available": "tillgängliga",
   "FOURSTAT.Willpower.NoneLeft": "Ingen Willpower kvar.",
 

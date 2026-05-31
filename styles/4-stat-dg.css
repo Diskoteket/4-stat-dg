@@ -807,6 +807,24 @@
 
 /* ── Dialog helpers ──────────────────────────────────────────────────── */
 
+.willpower-spend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.willpower-spend-row input[type="number"] {
+  width: 56px;
+  text-align: center;
+}
+
+.willpower-spend-row small {
+  color: #888;
+  font-size: 0.8em;
+}
+
+
 .bond-repair-summary {
   list-style: none;
   padding: 0;
