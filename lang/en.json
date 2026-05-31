@@ -16,6 +16,7 @@
   "FOURSTAT.Section.Traits": "Traits",
   "FOURSTAT.Section.Bonds": "Bonds",
   "FOURSTAT.Section.Biography": "Background",
+  "FOURSTAT.Section.PermanentDamage": "Permanent Damage",
 
   "FOURSTAT.Stat.Action": "Action",
   "FOURSTAT.Stat.Insight": "Insight",
@@ -102,6 +103,15 @@
   "FOURSTAT.NPC.ThreatStandard": "Standard",
   "FOURSTAT.NPC.ThreatMajor": "Major",
   "FOURSTAT.NPC.Notes": "Notes",
+
+  "FOURSTAT.PermanentDamage.Title": "Name the permanent damage",
+  "FOURSTAT.PermanentDamage.TitleCatastrophic": "Name the catastrophic damage",
+  "FOURSTAT.PermanentDamage.NameLabel": "What happened to the character?",
+  "FOURSTAT.PermanentDamage.NamePlaceholder": "e.g. Traumatic flashbacks, Deep paranoia…",
+  "FOURSTAT.PermanentDamage.DefaultLabel": "Permanent psychological damage",
+  "FOURSTAT.PermanentDamage.Add": "Add damage",
+  "FOURSTAT.PermanentDamage.Skip": "Skip",
+  "FOURSTAT.PermanentDamage.Empty": "No permanent damage.",
 
   "FOURSTAT.Description": "Description",
   "FOURSTAT.Edit": "Edit",

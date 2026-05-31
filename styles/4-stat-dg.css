@@ -349,6 +349,78 @@
 .fourstat-chat.stress-roll.severity-2 { border-color: #a02020; }
 .fourstat-chat.stress-roll.severity-3 { border-color: #4a0d0d; background: #fbe7e7; }
 
+/* Permanent damage list */
+
+.fourstat .damage-list {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+}
+
+.fourstat .damage-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  background: rgba(100, 20, 20, 0.06);
+  border-left: 3px solid #a02020;
+}
+
+.fourstat .damage-row.severity-catastrophic {
+  background: rgba(74, 13, 13, 0.12);
+  border-left-color: #4a0d0d;
+}
+
+.fourstat .damage-badge {
+  flex: 0 0 auto;
+  font-size: 0.7em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: #a02020;
+  padding: 2px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.fourstat .damage-row.severity-catastrophic .damage-badge {
+  background: #4a0d0d;
+}
+
+.fourstat .damage-label {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px dashed #aaa;
+  font-size: 0.95em;
+}
+
+.fourstat .damage-empty {
+  color: #888;
+  font-style: italic;
+  font-size: 0.9em;
+  margin: 4px 6px;
+}
+
+/* Naming dialog hint */
+.damage-dialog-hint {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+.damage-dialog-hint.severity-permanent {
+  background: rgba(160, 32, 32, 0.1);
+  border-left: 3px solid #a02020;
+}
+.damage-dialog-hint.severity-catastrophic {
+  background: rgba(74, 13, 13, 0.15);
+  border-left: 3px solid #4a0d0d;
+}
+
 .bond-repair-summary {
   list-style: none;
   padding: 0;

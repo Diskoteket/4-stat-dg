@@ -1,4 +1,4 @@
-const { SchemaField, NumberField, StringField, HTMLField } = foundry.data.fields;
+const { SchemaField, NumberField, StringField, HTMLField, ArrayField } = foundry.data.fields;
 
 export class CharacterData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -28,7 +28,15 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       details: new SchemaField({
         concept: new StringField({ initial: "", nullable: false }),
         biography: new HTMLField({ initial: "", nullable: false })
-      })
+      }),
+      permanentDamage: new ArrayField(
+        new SchemaField({
+          key: new StringField({ initial: "", nullable: false }),
+          label: new StringField({ initial: "", nullable: false }),
+          severity: new StringField({ initial: "permanent", nullable: false })
+        }),
+        { initial: [] }
+      )
     };
   }
 

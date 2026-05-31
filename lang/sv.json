@@ -16,6 +16,7 @@
   "FOURSTAT.Section.Traits": "Drag",
   "FOURSTAT.Section.Bonds": "Band",
   "FOURSTAT.Section.Biography": "Bakgrund",
+  "FOURSTAT.Section.PermanentDamage": "Permanenta Skador",
 
   "FOURSTAT.Stat.Action": "Action",
   "FOURSTAT.Stat.Insight": "Insight",
@@ -102,6 +103,15 @@
   "FOURSTAT.NPC.ThreatStandard": "Standard",
   "FOURSTAT.NPC.ThreatMajor": "Större",
   "FOURSTAT.NPC.Notes": "Anteckningar",
+
+  "FOURSTAT.PermanentDamage.Title": "Namnge den permanenta skadan",
+  "FOURSTAT.PermanentDamage.TitleCatastrophic": "Namnge den katastrofala skadan",
+  "FOURSTAT.PermanentDamage.NameLabel": "Vad hände med karaktären?",
+  "FOURSTAT.PermanentDamage.NamePlaceholder": "T.ex. Traumatiska flashbacks, Djup paranoia…",
+  "FOURSTAT.PermanentDamage.DefaultLabel": "Permanent psykisk skada",
+  "FOURSTAT.PermanentDamage.Add": "Lägg till skada",
+  "FOURSTAT.PermanentDamage.Skip": "Hoppa över",
+  "FOURSTAT.PermanentDamage.Empty": "Inga permanenta skador.",
 
   "FOURSTAT.Description": "Beskrivning",
   "FOURSTAT.Edit": "Redigera",

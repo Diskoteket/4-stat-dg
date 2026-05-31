@@ -112,6 +112,33 @@
           </div>
         </div>
       </section>
+      <section class="permanent-damage">
+        <header class="section-header">
+          <h2>{{localize 'FOURSTAT.Section.PermanentDamage'}}</h2>
+          <button type="button" data-action="add-damage">+ {{localize 'FOURSTAT.PermanentDamage.Add'}}</button>
+        </header>
+        {{#if permanentDamage.length}}
+        <ul class="damage-list">
+          {{#each permanentDamage as |entry|}}
+          <li class="damage-row severity-{{entry.severity}}">
+            <span class="damage-badge">
+              {{#if (eq entry.severity "catastrophic")}}
+                {{localize 'FOURSTAT.Stress.Catastrophic'}}
+              {{else}}
+                {{localize 'FOURSTAT.Stress.PermanentDamage'}}
+              {{/if}}
+            </span>
+            <input type="text" class="damage-label" value="{{entry.label}}"
+              data-edit-damage data-damage-key="{{entry.key}}" />
+            <button type="button" data-action="remove-damage" data-damage-key="{{entry.key}}"
+              title="{{localize 'FOURSTAT.Delete'}}">✕</button>
+          </li>
+          {{/each}}
+        </ul>
+        {{else}}
+        <p class="damage-empty">{{localize 'FOURSTAT.PermanentDamage.Empty'}}</p>
+        {{/if}}
+      </section>
     </div>
 
     <div class="tab" data-tab="bonds">

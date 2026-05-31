@@ -69,6 +69,30 @@ export class FourStatActor extends Actor {
     return result;
   }
 
+  async addPermanentDamage(label, severity = "permanent") {
+    const current = this.system.permanentDamage ?? [];
+    await this.update({
+      "system.permanentDamage": [
+        ...current,
+        { key: foundry.utils.randomID(), label, severity }
+      ]
+    });
+  }
+
+  async removePermanentDamage(key) {
+    const current = this.system.permanentDamage ?? [];
+    await this.update({
+      "system.permanentDamage": current.filter(e => e.key !== key)
+    });
+  }
+
+  async updatePermanentDamageLabel(key, label) {
+    const current = this.system.permanentDamage ?? [];
+    await this.update({
+      "system.permanentDamage": current.map(e => e.key === key ? { ...e, label } : e)
+    });
+  }
+
   async protectWithBond(bondId, amount) {
     const bond = this.items.get(bondId);
     if (!bond || bond.type !== "bond") return false;

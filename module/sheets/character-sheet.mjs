@@ -30,6 +30,7 @@ export class CharacterSheet extends ActorSheet {
     context.negativeTraits = this.actor.negativeTraits;
     context.bonds = this.actor.bonds;
     context.stressPool = this.actor.stressPool;
+    context.permanentDamage = system.permanentDamage ?? [];
     context.biographyHTML = await TextEditor.enrichHTML(system.details?.biography ?? "", { async: true });
     return context;
   }
@@ -40,6 +41,7 @@ export class CharacterSheet extends ActorSheet {
 
     html.on("click", "[data-action]", this._onAction.bind(this));
     html.on("change", "[data-edit-bond]", this._onBondValueChange.bind(this));
+    html.on("change", "[data-edit-damage]", this._onDamageLabelChange.bind(this));
   }
 
   async _onAction(event) {
@@ -66,6 +68,10 @@ export class CharacterSheet extends ActorSheet {
         return this._createItem(btn.dataset.itemType, btn.dataset.polarity);
       case "edit-item":
         return this.actor.items.get(btn.dataset.itemId)?.sheet?.render(true);
+      case "add-damage":
+        return this._promptPermanentDamage();
+      case "remove-damage":
+        return this.actor.removePermanentDamage(btn.dataset.damageKey);
       case "delete-item":
         return this._deleteItem(btn.dataset.itemId);
     }
@@ -139,6 +145,7 @@ export class CharacterSheet extends ActorSheet {
               const result = await this.actor.rollStress();
               if (result?.gainsPermanent) {
                 await this.actor.takeStress(1, { permanent: true });
+                await this._promptPermanentDamage(result.effectKey >= 3 ? "catastrophic" : "permanent");
               }
               resolve(result);
             }
@@ -209,5 +216,52 @@ export class CharacterSheet extends ActorSheet {
     const itemId = input.dataset.itemId;
     const value = Math.max(0, Math.min(3, Number(input.value) || 0));
     await this.actor.items.get(itemId)?.update({ "system.value": value });
+  }
+
+  async _onDamageLabelChange(event) {
+    const input = event.currentTarget;
+    await this.actor.updatePermanentDamageLabel(input.dataset.damageKey, input.value.trim());
+  }
+
+  async _promptPermanentDamage(severity = "permanent") {
+    const title = game.i18n.localize(
+      severity === "catastrophic"
+        ? "FOURSTAT.PermanentDamage.TitleCatastrophic"
+        : "FOURSTAT.PermanentDamage.Title"
+    );
+    const hint = game.i18n.localize(
+      severity === "catastrophic"
+        ? "FOURSTAT.Stress.Catastrophic"
+        : "FOURSTAT.Stress.PermanentDamage"
+    );
+
+    return new Promise(resolve => {
+      new Dialog({
+        title,
+        content: `<form>
+          <p class="damage-dialog-hint severity-${severity}">${hint}</p>
+          <div class="form-group">
+            <label>${game.i18n.localize("FOURSTAT.PermanentDamage.NameLabel")}</label>
+            <input type="text" name="label" placeholder="${game.i18n.localize("FOURSTAT.PermanentDamage.NamePlaceholder")}" autofocus />
+          </div>
+        </form>`,
+        buttons: {
+          add: {
+            label: game.i18n.localize("FOURSTAT.PermanentDamage.Add"),
+            callback: async (html) => {
+              const label = html[0].querySelector("[name='label']").value.trim()
+                || game.i18n.localize("FOURSTAT.PermanentDamage.DefaultLabel");
+              await this.actor.addPermanentDamage(label, severity);
+              resolve(label);
+            }
+          },
+          skip: {
+            label: game.i18n.localize("FOURSTAT.PermanentDamage.Skip"),
+            callback: () => resolve(null)
+          }
+        },
+        default: "add"
+      }).render(true);
+    });
   }
 }
