@@ -1,0 +1,25 @@
+<div class="fourstat-chat stress-roll severity-{{effectKey}}">
+  <header class="chat-header">
+    <span class="chat-actor">{{actorName}}</span>
+    <span class="chat-stat">{{localize 'FOURSTAT.Stress.RollFlavor'}}</span>
+  </header>
+
+  <div class="chat-body">
+    <div class="dice-row">
+      {{#each faces as |face|}}
+      <span class="die d6 face-{{face}} {{#if (eq face 1)}}face-critical{{/if}}">{{face}}</span>
+      {{/each}}
+    </div>
+
+    <div class="result-row">
+      <span class="result-total">{{ones}} × 1</span>
+      <span class="result-status"><strong>{{effectLabel}}</strong></span>
+    </div>
+
+    {{#if gainsPermanent}}
+    <div class="chat-note">
+      {{localize 'FOURSTAT.Stress.GainsPermanent'}}
+    </div>
+    {{/if}}
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="fourstat-chat bond-roll {{#if success}}success{{else}}failure{{/if}}">
+  <header class="chat-header">
+    <span class="chat-actor">{{actorName}}</span>
+    <span class="chat-stat">{{localize 'FOURSTAT.Bond.RepairFlavor' bond=bondName}}</span>
+  </header>
+
+  <div class="chat-body">
+    <div class="dice-row">
+      {{#each faces as |face|}}
+      <span class="die d6 face-{{face}}">{{face}}</span>
+      {{/each}}
+    </div>
+
+    <div class="groups">
+      {{#each groups as |group|}}
+      <span class="group {{#if (eq group.face ../best.face)}}group-best{{/if}}">
+        {{#if (gt group.count 1)}}
+          {{group.count}}× {{group.face}} = <strong>{{group.sum}}</strong>
+        {{else}}
+          {{group.face}}
+        {{/if}}
+      </span>
+      {{/each}}
+    </div>
+
+    <div class="result-row">
+      <span class="result-total"><strong>{{total}}</strong> {{localize 'FOURSTAT.Chat.Vs'}} {{threshold}}</span>
+      <span class="result-status">
+        {{#if success}}
+          ✓ {{localize 'FOURSTAT.Bond.RepairSuccess'}}
+        {{else}}
+          ✗ {{localize 'FOURSTAT.Bond.RepairFailure'}}
+        {{/if}}
+      </span>
+    </div>
+  </div>
+</div>

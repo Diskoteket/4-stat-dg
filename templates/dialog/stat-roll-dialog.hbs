@@ -1,0 +1,27 @@
+<form>
+  <div class="form-group">
+    <label>{{localize 'FOURSTAT.Roll.Stat'}}</label>
+    <div><strong>{{statLabel}}</strong></div>
+  </div>
+  <div class="form-group">
+    <label>{{localize 'FOURSTAT.Roll.Threshold'}}</label>
+    <select name="threshold">
+      {{#each thresholds as |label key|}}
+      <option value="{{key}}">{{key}} — {{localize label}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label>{{localize 'FOURSTAT.Roll.Trait'}}</label>
+    <select name="trait">
+      <option value="">{{localize 'FOURSTAT.Roll.NoTrait'}}</option>
+      {{#each traits as |t|}}
+      <option value="{{t.id}}">{{t.name}} — {{#if (eq t.system.polarity "positive")}}{{localize 'FOURSTAT.Trait.Positive'}}{{else}}{{localize 'FOURSTAT.Trait.Negative'}}{{/if}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label>{{localize 'FOURSTAT.Roll.Note'}}</label>
+    <input type="text" name="label" placeholder="{{localize 'FOURSTAT.Roll.NotePlaceholder'}}" />
+  </div>
+</form>

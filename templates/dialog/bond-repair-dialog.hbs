@@ -1,0 +1,14 @@
+<form>
+  <p>{{localize 'FOURSTAT.Bond.RepairIntro'}}</p>
+  <ul class="bond-repair-summary">
+    <li><strong>{{localize 'FOURSTAT.Bond.Label'}}:</strong> {{bond.name}}</li>
+    <li><strong>{{localize 'FOURSTAT.Bond.Value'}}:</strong> {{bond.system.value}}</li>
+    <li><strong>{{localize 'FOURSTAT.Roll.Threshold'}}:</strong> {{threshold}}</li>
+  </ul>
+  <div class="form-group">
+    <label>
+      <input type="checkbox" name="willpower" {{#unless willpower}}disabled{{/unless}} />
+      {{localize 'FOURSTAT.Willpower.SpendForBonus'}} ({{willpower}} {{localize 'FOURSTAT.Willpower.Available'}})
+    </label>
+  </div>
+</form>

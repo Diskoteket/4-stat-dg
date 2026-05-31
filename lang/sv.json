@@ -1,0 +1,107 @@
+{
+  "FOURSTAT.SheetLabel.Character": "Karaktär",
+  "FOURSTAT.SheetLabel.NPC": "NPC",
+  "FOURSTAT.SheetLabel.Trait": "Drag",
+  "FOURSTAT.SheetLabel.Bond": "Band",
+
+  "FOURSTAT.Sheet.Name": "Namn",
+  "FOURSTAT.Sheet.Concept": "Koncept",
+  "FOURSTAT.Sheet.ConceptPlaceholder": "Vem är karaktären?",
+
+  "FOURSTAT.Tab.Main": "Översikt",
+  "FOURSTAT.Tab.Bonds": "Band",
+  "FOURSTAT.Tab.Biography": "Bakgrund",
+
+  "FOURSTAT.Section.Stats": "Egenskaper",
+  "FOURSTAT.Section.Traits": "Drag",
+  "FOURSTAT.Section.Bonds": "Band",
+  "FOURSTAT.Section.Biography": "Bakgrund",
+
+  "FOURSTAT.Stat.Action": "Action",
+  "FOURSTAT.Stat.Insight": "Insight",
+  "FOURSTAT.Stat.Influence": "Influence",
+  "FOURSTAT.Stat.Nerves": "Nerves",
+
+  "FOURSTAT.StatAbbr.Action": "ACT",
+  "FOURSTAT.StatAbbr.Insight": "INS",
+  "FOURSTAT.StatAbbr.Influence": "INF",
+  "FOURSTAT.StatAbbr.Nerves": "NRV",
+
+  "FOURSTAT.Trait.Positive": "Positivt drag",
+  "FOURSTAT.Trait.Negative": "Negativt drag",
+  "FOURSTAT.Trait.Polarity": "Polaritet",
+  "FOURSTAT.Trait.NewPositive": "Nytt positivt drag",
+  "FOURSTAT.Trait.NewNegative": "Nytt negativt drag",
+
+  "FOURSTAT.Bond.Label": "Band",
+  "FOURSTAT.Bond.Value": "Värde",
+  "FOURSTAT.Bond.New": "Nytt band",
+  "FOURSTAT.Bond.Repair": "Reparera",
+  "FOURSTAT.Bond.RepairFlavor": "Reparation av {bond}",
+  "FOURSTAT.Bond.RepairThresholdHint": "Tröskel för reparation",
+  "FOURSTAT.Bond.RepairIntro": "Slå Influence mot bandets reparationströskel.",
+  "FOURSTAT.Bond.RepairSuccess": "Bandet stärks (+1)",
+  "FOURSTAT.Bond.RepairFailure": "Bandet skadas (-1)",
+  "FOURSTAT.Bond.BrokenWarning": "Bandet är brutet — bara stora narrativa händelser kan återställa det.",
+
+  "FOURSTAT.Willpower.Label": "Willpower",
+  "FOURSTAT.Willpower.Spend": "Spendera 1 Willpower",
+  "FOURSTAT.Willpower.Restore": "Återfå 1 Willpower",
+  "FOURSTAT.Willpower.SpendForBonus": "Spendera 1 Willpower för +1 tärning",
+  "FOURSTAT.Willpower.Available": "tillgängliga",
+  "FOURSTAT.Willpower.NoneLeft": "Ingen Willpower kvar.",
+
+  "FOURSTAT.Stress.Label": "Stress",
+  "FOURSTAT.Stress.Temporary": "Tillfällig",
+  "FOURSTAT.Stress.Permanent": "Permanent",
+  "FOURSTAT.Stress.Roll": "Slå Stress",
+  "FOURSTAT.Stress.RollFlavor": "Stress-slag",
+  "FOURSTAT.Stress.NoneToRoll": "Inga Stress-tärningar att slå.",
+  "FOURSTAT.Stress.Confirm": "Slå alla {count} Stress-tärningar?",
+  "FOURSTAT.Stress.Apply": "Lägg till Stress",
+  "FOURSTAT.Stress.GainsPermanent": "Karaktären får en permanent Stress-tärning.",
+  "FOURSTAT.Stress.NoEffect": "Ingen effekt",
+  "FOURSTAT.Stress.Freakout": "Freakout — kort kollaps",
+  "FOURSTAT.Stress.PermanentDamage": "Permanent psykisk skada",
+  "FOURSTAT.Stress.Catastrophic": "Psykos / försvinnande / död",
+
+  "FOURSTAT.Threshold.Easy": "Lätt–medel",
+  "FOURSTAT.Threshold.Hard": "Svår",
+  "FOURSTAT.Threshold.Extreme": "Extrem",
+
+  "FOURSTAT.Roll.Stat": "Egenskap",
+  "FOURSTAT.Roll.Threshold": "Tröskel",
+  "FOURSTAT.Roll.Trait": "Relevant drag",
+  "FOURSTAT.Roll.NoTrait": "Inget drag",
+  "FOURSTAT.Roll.Note": "Anteckning",
+  "FOURSTAT.Roll.NotePlaceholder": "Beskriv handlingen (valfritt)",
+  "FOURSTAT.Roll.Submit": "Slå",
+  "FOURSTAT.Roll.DialogTitle": "Slå {stat}",
+  "FOURSTAT.Roll.Flavor": "Slår {stat}",
+
+  "FOURSTAT.Chat.Vs": "mot",
+  "FOURSTAT.Chat.Success": "Lyckas",
+  "FOURSTAT.Chat.Failure": "Misslyckas",
+  "FOURSTAT.Chat.StressDice": "Stress-tärning(ar)",
+
+  "FOURSTAT.NPC.Threat": "Hotnivå",
+  "FOURSTAT.NPC.ThreatMinor": "Mindre",
+  "FOURSTAT.NPC.ThreatStandard": "Standard",
+  "FOURSTAT.NPC.ThreatMajor": "Större",
+  "FOURSTAT.NPC.Notes": "Anteckningar",
+
+  "FOURSTAT.Description": "Beskrivning",
+  "FOURSTAT.Edit": "Redigera",
+  "FOURSTAT.Delete": "Ta bort",
+
+  "FOURSTAT.Confirm.DeleteTitle": "Ta bort?",
+  "FOURSTAT.Confirm.DeleteBody": "Vill du verkligen ta bort {name}?",
+
+  "FOURSTAT.Notify.NotOwner": "Du äger inte den här karaktären.",
+  "FOURSTAT.Notify.StressApplied": "Lade till {amount} Stress till {name}.",
+
+  "TYPES.Actor.character": "Karaktär",
+  "TYPES.Actor.npc": "NPC",
+  "TYPES.Item.trait": "Drag",
+  "TYPES.Item.bond": "Band"
+}

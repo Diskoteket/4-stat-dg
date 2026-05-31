@@ -1,0 +1,107 @@
+{
+  "FOURSTAT.SheetLabel.Character": "Character",
+  "FOURSTAT.SheetLabel.NPC": "NPC",
+  "FOURSTAT.SheetLabel.Trait": "Trait (Drag)",
+  "FOURSTAT.SheetLabel.Bond": "Bond (Band)",
+
+  "FOURSTAT.Sheet.Name": "Name",
+  "FOURSTAT.Sheet.Concept": "Concept",
+  "FOURSTAT.Sheet.ConceptPlaceholder": "Who is this character?",
+
+  "FOURSTAT.Tab.Main": "Overview",
+  "FOURSTAT.Tab.Bonds": "Bonds",
+  "FOURSTAT.Tab.Biography": "Background",
+
+  "FOURSTAT.Section.Stats": "Stats",
+  "FOURSTAT.Section.Traits": "Traits",
+  "FOURSTAT.Section.Bonds": "Bonds",
+  "FOURSTAT.Section.Biography": "Background",
+
+  "FOURSTAT.Stat.Action": "Action",
+  "FOURSTAT.Stat.Insight": "Insight",
+  "FOURSTAT.Stat.Influence": "Influence",
+  "FOURSTAT.Stat.Nerves": "Nerves",
+
+  "FOURSTAT.StatAbbr.Action": "ACT",
+  "FOURSTAT.StatAbbr.Insight": "INS",
+  "FOURSTAT.StatAbbr.Influence": "INF",
+  "FOURSTAT.StatAbbr.Nerves": "NRV",
+
+  "FOURSTAT.Trait.Positive": "Positive trait",
+  "FOURSTAT.Trait.Negative": "Negative trait",
+  "FOURSTAT.Trait.Polarity": "Polarity",
+  "FOURSTAT.Trait.NewPositive": "New positive trait",
+  "FOURSTAT.Trait.NewNegative": "New negative trait",
+
+  "FOURSTAT.Bond.Label": "Bond",
+  "FOURSTAT.Bond.Value": "Value",
+  "FOURSTAT.Bond.New": "New bond",
+  "FOURSTAT.Bond.Repair": "Repair",
+  "FOURSTAT.Bond.RepairFlavor": "Repairing {bond}",
+  "FOURSTAT.Bond.RepairThresholdHint": "Repair threshold",
+  "FOURSTAT.Bond.RepairIntro": "Roll Influence against the bond's repair threshold.",
+  "FOURSTAT.Bond.RepairSuccess": "Bond strengthened (+1)",
+  "FOURSTAT.Bond.RepairFailure": "Bond damaged (-1)",
+  "FOURSTAT.Bond.BrokenWarning": "Bond is broken — only major narrative events can restore it.",
+
+  "FOURSTAT.Willpower.Label": "Willpower",
+  "FOURSTAT.Willpower.Spend": "Spend 1 Willpower",
+  "FOURSTAT.Willpower.Restore": "Restore 1 Willpower",
+  "FOURSTAT.Willpower.SpendForBonus": "Spend 1 Willpower for +1 die",
+  "FOURSTAT.Willpower.Available": "available",
+  "FOURSTAT.Willpower.NoneLeft": "No Willpower left.",
+
+  "FOURSTAT.Stress.Label": "Stress",
+  "FOURSTAT.Stress.Temporary": "Temporary",
+  "FOURSTAT.Stress.Permanent": "Permanent",
+  "FOURSTAT.Stress.Roll": "Roll Stress",
+  "FOURSTAT.Stress.RollFlavor": "Stress roll",
+  "FOURSTAT.Stress.NoneToRoll": "No Stress dice to roll.",
+  "FOURSTAT.Stress.Confirm": "Roll all {count} Stress dice?",
+  "FOURSTAT.Stress.Apply": "Add Stress",
+  "FOURSTAT.Stress.GainsPermanent": "Character gains one permanent Stress die.",
+  "FOURSTAT.Stress.NoEffect": "No effect",
+  "FOURSTAT.Stress.Freakout": "Freakout — brief collapse",
+  "FOURSTAT.Stress.PermanentDamage": "Permanent psychological damage",
+  "FOURSTAT.Stress.Catastrophic": "Psychosis / disappearance / death",
+
+  "FOURSTAT.Threshold.Easy": "Easy–medium",
+  "FOURSTAT.Threshold.Hard": "Hard",
+  "FOURSTAT.Threshold.Extreme": "Extreme",
+
+  "FOURSTAT.Roll.Stat": "Stat",
+  "FOURSTAT.Roll.Threshold": "Threshold",
+  "FOURSTAT.Roll.Trait": "Relevant trait",
+  "FOURSTAT.Roll.NoTrait": "No trait",
+  "FOURSTAT.Roll.Note": "Note",
+  "FOURSTAT.Roll.NotePlaceholder": "Describe the action (optional)",
+  "FOURSTAT.Roll.Submit": "Roll",
+  "FOURSTAT.Roll.DialogTitle": "Roll {stat}",
+  "FOURSTAT.Roll.Flavor": "Rolling {stat}",
+
+  "FOURSTAT.Chat.Vs": "vs",
+  "FOURSTAT.Chat.Success": "Success",
+  "FOURSTAT.Chat.Failure": "Failure",
+  "FOURSTAT.Chat.StressDice": "Stress die/dice",
+
+  "FOURSTAT.NPC.Threat": "Threat level",
+  "FOURSTAT.NPC.ThreatMinor": "Minor",
+  "FOURSTAT.NPC.ThreatStandard": "Standard",
+  "FOURSTAT.NPC.ThreatMajor": "Major",
+  "FOURSTAT.NPC.Notes": "Notes",
+
+  "FOURSTAT.Description": "Description",
+  "FOURSTAT.Edit": "Edit",
+  "FOURSTAT.Delete": "Delete",
+
+  "FOURSTAT.Confirm.DeleteTitle": "Delete?",
+  "FOURSTAT.Confirm.DeleteBody": "Really delete {name}?",
+
+  "FOURSTAT.Notify.NotOwner": "You don't own this character.",
+  "FOURSTAT.Notify.StressApplied": "Added {amount} Stress to {name}.",
+
+  "TYPES.Actor.character": "Character",
+  "TYPES.Actor.npc": "NPC",
+  "TYPES.Item.trait": "Trait",
+  "TYPES.Item.bond": "Bond"
+}

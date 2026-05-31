@@ -1,0 +1,342 @@
+/* 4-Stat DG — sheet & chat styles */
+
+.fourstat.sheet {
+  font-family: "Signika", sans-serif;
+}
+
+.fourstat .sheet-header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.fourstat .sheet-header .profile-img {
+  flex: 0 0 96px;
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border: 1px solid #555;
+  border-radius: 6px;
+}
+
+.fourstat .header-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fourstat .charname input,
+.fourstat .concept input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #888;
+  font-size: 1.1em;
+}
+
+.fourstat .charname input {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.fourstat .resource-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) 2fr;
+  gap: 12px;
+}
+
+.fourstat .resource {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.fourstat .resource label {
+  font-weight: 700;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fourstat .resource-value {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fourstat .resource-value input[type="number"] {
+  width: 48px;
+  text-align: center;
+}
+
+.fourstat .stress-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.fourstat .stress-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.fourstat .stress-cell-label {
+  font-size: 0.75em;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.fourstat .stress-roll-btn {
+  width: 100%;
+  margin-top: 6px;
+  background: #4a0d0d;
+  color: #fdecec;
+  border: 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.fourstat .stress-roll-btn:hover {
+  background: #6a1414;
+}
+
+.fourstat .sheet-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid #555;
+  margin-bottom: 8px;
+}
+
+.fourstat .sheet-tabs .item {
+  padding: 4px 10px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+.fourstat .sheet-tabs .item.active {
+  border-color: #4a0d0d;
+  font-weight: 700;
+}
+
+.fourstat .stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.fourstat .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+.fourstat .stat-roll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.fourstat .stat-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.06em;
+}
+
+.fourstat .stat-value {
+  font-size: 1.8em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.fourstat .stat input[type="number"] {
+  width: 100%;
+  text-align: center;
+}
+
+.fourstat .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.fourstat .section-actions button {
+  margin-left: 4px;
+}
+
+.fourstat .trait-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.fourstat .trait-list,
+.fourstat .bond-list {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+}
+
+.fourstat .trait-row,
+.fourstat .bond-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 4px 6px;
+  border-bottom: 1px solid #ddd;
+}
+
+.fourstat .trait-row.trait-negative .trait-name {
+  color: #883333;
+  font-style: italic;
+}
+
+.fourstat .bond-row {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  padding: 6px 8px;
+}
+
+.fourstat .bond-value input {
+  width: 48px;
+  text-align: center;
+}
+
+.fourstat .biography {
+  margin-top: 8px;
+}
+
+/* Chat cards */
+
+.fourstat-chat {
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 8px;
+  margin: 4px 0;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.fourstat-chat .chat-header {
+  display: flex;
+  gap: 6px;
+  font-size: 0.85em;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.fourstat-chat .chat-actor {
+  font-weight: 700;
+}
+
+.fourstat-chat .dice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.fourstat-chat .die {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-weight: 700;
+  background: #f6f1e2;
+}
+
+.fourstat-chat .die.face-critical {
+  background: #6a1414;
+  color: #fdecec;
+  border-color: #200;
+}
+
+.fourstat-chat .groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 0.9em;
+}
+
+.fourstat-chat .group {
+  padding: 2px 6px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.fourstat-chat .group.group-best {
+  background: #d4a017;
+  color: #1a1100;
+  font-weight: 700;
+}
+
+.fourstat-chat .result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed #aaa;
+  padding-top: 4px;
+  font-size: 0.95em;
+}
+
+.fourstat-chat.success .result-status {
+  color: #2a662a;
+  font-weight: 700;
+}
+.fourstat-chat.failure .result-status {
+  color: #883333;
+  font-weight: 700;
+}
+
+.fourstat-chat .chat-actions {
+  margin-top: 6px;
+}
+
+.fourstat-chat .chat-note {
+  margin-top: 6px;
+  padding: 4px 6px;
+  background: #4a0d0d;
+  color: #fdecec;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.fourstat-chat.stress-roll.severity-0 { border-color: #888; }
+.fourstat-chat.stress-roll.severity-1 { border-color: #b58c00; }
+.fourstat-chat.stress-roll.severity-2 { border-color: #a02020; }
+.fourstat-chat.stress-roll.severity-3 { border-color: #4a0d0d; background: #fbe7e7; }
+
+.bond-repair-summary {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0;
+}
+.bond-repair-summary li {
+  padding: 2px 0;
+}

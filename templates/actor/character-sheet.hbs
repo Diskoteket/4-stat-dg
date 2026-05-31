@@ -1,0 +1,150 @@
+{{!-- 4-Stat DG character sheet --}}
+<form class="{{cssClass}}" autocomplete="off">
+
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'FOURSTAT.Sheet.Name'}}" />
+      </h1>
+      <div class="concept">
+        <label>{{localize 'FOURSTAT.Sheet.Concept'}}</label>
+        <input type="text" name="system.details.concept" value="{{system.details.concept}}" placeholder="{{localize 'FOURSTAT.Sheet.ConceptPlaceholder'}}"/>
+      </div>
+
+      <div class="resource-row">
+        <div class="resource willpower">
+          <label>{{localize 'FOURSTAT.Willpower.Label'}}</label>
+          <div class="resource-value">
+            <button type="button" data-action="spend-willpower" title="{{localize 'FOURSTAT.Willpower.Spend'}}">−</button>
+            <input type="number" name="system.willpower.value" value="{{system.willpower.value}}" min="0" />
+            <span>/</span>
+            <input type="number" name="system.willpower.max" value="{{system.willpower.max}}" min="0" />
+            <button type="button" data-action="restore-willpower" title="{{localize 'FOURSTAT.Willpower.Restore'}}">+</button>
+          </div>
+        </div>
+
+        <div class="resource stress">
+          <label>{{localize 'FOURSTAT.Stress.Label'}}</label>
+          <div class="resource-value stress-grid">
+            <span class="stress-cell">
+              <span class="stress-cell-label">{{localize 'FOURSTAT.Stress.Temporary'}}</span>
+              <button type="button" data-action="clear-stress" data-amount="1">−</button>
+              <input type="number" name="system.stress.temporary" value="{{system.stress.temporary}}" min="0" />
+              <button type="button" data-action="add-stress" data-amount="1">+</button>
+            </span>
+            <span class="stress-cell">
+              <span class="stress-cell-label">{{localize 'FOURSTAT.Stress.Permanent'}}</span>
+              <button type="button" data-action="clear-stress" data-amount="1" data-permanent="true">−</button>
+              <input type="number" name="system.stress.permanent" value="{{system.stress.permanent}}" min="0" />
+              <button type="button" data-action="add-stress" data-amount="1" data-permanent="true">+</button>
+            </span>
+          </div>
+          <button type="button" class="stress-roll-btn" data-action="roll-stress">
+            {{localize 'FOURSTAT.Stress.Roll'}} ({{stressPool}})
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs">
+    <a class="item" data-tab="main">{{localize 'FOURSTAT.Tab.Main'}}</a>
+    <a class="item" data-tab="bonds">{{localize 'FOURSTAT.Tab.Bonds'}}</a>
+    <a class="item" data-tab="biography">{{localize 'FOURSTAT.Tab.Biography'}}</a>
+  </nav>
+
+  <section class="sheet-body">
+
+    <div class="tab" data-tab="main">
+      <section class="stats">
+        <h2>{{localize 'FOURSTAT.Section.Stats'}}</h2>
+        <div class="stat-grid">
+          {{#each stats}}
+          <div class="stat">
+            <button type="button" class="stat-roll" data-action="roll-stat" data-stat="{{key}}">
+              <span class="stat-label">{{localize label}}</span>
+              <span class="stat-value">{{value}}</span>
+            </button>
+            <input type="number" name="system.stats.{{key}}.value" value="{{value}}" min="0" max="5" />
+          </div>
+          {{/each}}
+        </div>
+      </section>
+
+      <section class="traits">
+        <header class="section-header">
+          <h2>{{localize 'FOURSTAT.Section.Traits'}}</h2>
+          <div class="section-actions">
+            <button type="button" data-action="create-item" data-item-type="trait" data-polarity="positive">+ {{localize 'FOURSTAT.Trait.Positive'}}</button>
+            <button type="button" data-action="create-item" data-item-type="trait" data-polarity="negative">+ {{localize 'FOURSTAT.Trait.Negative'}}</button>
+          </div>
+        </header>
+
+        <div class="trait-columns">
+          <div class="trait-column">
+            <h3>{{localize 'FOURSTAT.Trait.Positive'}}</h3>
+            <ul class="trait-list">
+              {{#each positiveTraits}}
+              <li class="trait-row" data-item-id="{{this.id}}">
+                <span class="trait-name">{{this.name}}</span>
+                <span class="trait-actions">
+                  <button type="button" data-action="edit-item" data-item-id="{{this.id}}" title="{{localize 'FOURSTAT.Edit'}}">✎</button>
+                  <button type="button" data-action="delete-item" data-item-id="{{this.id}}" title="{{localize 'FOURSTAT.Delete'}}">✕</button>
+                </span>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="trait-column">
+            <h3>{{localize 'FOURSTAT.Trait.Negative'}}</h3>
+            <ul class="trait-list">
+              {{#each negativeTraits}}
+              <li class="trait-row trait-negative" data-item-id="{{this.id}}">
+                <span class="trait-name">{{this.name}}</span>
+                <span class="trait-actions">
+                  <button type="button" data-action="edit-item" data-item-id="{{this.id}}" title="{{localize 'FOURSTAT.Edit'}}">✎</button>
+                  <button type="button" data-action="delete-item" data-item-id="{{this.id}}" title="{{localize 'FOURSTAT.Delete'}}">✕</button>
+                </span>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="tab" data-tab="bonds">
+      <section class="bonds">
+        <header class="section-header">
+          <h2>{{localize 'FOURSTAT.Section.Bonds'}}</h2>
+          <button type="button" data-action="create-item" data-item-type="bond">+ {{localize 'FOURSTAT.Bond.New'}}</button>
+        </header>
+        <ul class="bond-list">
+          {{#each bonds}}
+          <li class="bond-row" data-item-id="{{this.id}}">
+            <span class="bond-name">{{this.name}}</span>
+            <span class="bond-value">
+              <label>{{localize 'FOURSTAT.Bond.Value'}}</label>
+              <input type="number" min="0" max="3" value="{{this.system.value}}" data-edit-bond data-item-id="{{this.id}}" />
+            </span>
+            <span class="bond-actions">
+              <button type="button" data-action="repair-bond" data-item-id="{{this.id}}" title="{{localize 'FOURSTAT.Bond.Repair'}}">{{localize 'FOURSTAT.Bond.Repair'}}</button>
+              <button type="button" data-action="edit-item" data-item-id="{{this.id}}" title="{{localize 'FOURSTAT.Edit'}}">✎</button>
+              <button type="button" data-action="delete-item" data-item-id="{{this.id}}" title="{{localize 'FOURSTAT.Delete'}}">✕</button>
+            </span>
+          </li>
+          {{/each}}
+        </ul>
+      </section>
+    </div>
+
+    <div class="tab" data-tab="biography">
+      <section class="biography">
+        <h2>{{localize 'FOURSTAT.Section.Biography'}}</h2>
+        {{editor biographyHTML target="system.details.biography" button=true editable=editable}}
+      </section>
+    </div>
+
+  </section>
+</form>
