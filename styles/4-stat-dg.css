@@ -615,10 +615,57 @@
   margin: 4px 6px;
 }
 
-/* ── Biography ───────────────────────────────────────────────────────── */
+/* ── Biography / ProseMirror editor ─────────────────────────────────── */
 
 .fourstat .biography {
   margin-top: 8px;
+}
+
+.fourstat .editor {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  min-height: 200px;
+}
+
+.fourstat .editor-content,
+.fourstat .ProseMirror {
+  background: transparent;
+  color: var(--text);
+  padding: 8px 10px;
+  min-height: 180px;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.fourstat .ProseMirror p {
+  margin: 0 0 6px;
+}
+
+.fourstat .ProseMirror:focus {
+  box-shadow: inset 0 0 0 1px var(--positive);
+}
+
+.fourstat .editor-menu {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  padding: 4px 6px;
+}
+
+.fourstat .editor-menu button {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  padding: 2px 5px;
+  font-size: 0.8em;
+}
+
+.fourstat .editor-menu button:hover {
+  color: var(--positive);
+  border-color: var(--border);
+  background: var(--bg-raised);
 }
 
 /* ── Naming dialog hint ──────────────────────────────────────────────── */
