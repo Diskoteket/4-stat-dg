@@ -113,15 +113,44 @@ export class CharacterSheet extends ActorSheet {
       ui.notifications?.info(game.i18n.localize("FOURSTAT.Stress.NoneToRoll"));
       return;
     }
-    const confirmed = await Dialog.confirm({
-      title: game.i18n.localize("FOURSTAT.Stress.RollFlavor"),
-      content: `<p>${game.i18n.format("FOURSTAT.Stress.Confirm", { count: this.actor.stressPool })}</p>`
+    const willpower = this.actor.system.willpower?.value ?? 0;
+    const temporaryStress = this.actor.system.stress?.temporary ?? 0;
+    const canSpend = willpower > 0 && temporaryStress > 0;
+
+    const content = await renderTemplate("systems/4-stat-dg/templates/dialog/stress-roll-dialog.hbs", {
+      stressPool: this.actor.stressPool,
+      willpower,
+      canSpend
     });
-    if (!confirmed) return;
-    const result = await this.actor.rollStress();
-    if (result?.gainsPermanent) {
-      await this.actor.takeStress(1, { permanent: true });
-    }
+
+    return new Promise(resolve => {
+      new Dialog({
+        title: game.i18n.localize("FOURSTAT.Stress.RollFlavor"),
+        content,
+        buttons: {
+          roll: {
+            label: game.i18n.localize("FOURSTAT.Stress.Roll"),
+            callback: async (html) => {
+              const spendWillpower = html[0].querySelector("form")?.spendWillpower?.checked ?? false;
+              if (spendWillpower) {
+                await this.actor.spendWillpower(1);
+                await this.actor.clearStress(1);
+              }
+              const result = await this.actor.rollStress();
+              if (result?.gainsPermanent) {
+                await this.actor.takeStress(1, { permanent: true });
+              }
+              resolve(result);
+            }
+          },
+          cancel: {
+            label: game.i18n.localize("Cancel"),
+            callback: () => resolve(null)
+          }
+        },
+        default: "roll"
+      }).render(true);
+    });
   }
 
   async _promptBondRepair(bondId) {

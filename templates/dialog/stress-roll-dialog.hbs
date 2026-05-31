@@ -1,0 +1,13 @@
+<form>
+  <p>{{localize 'FOURSTAT.Stress.Confirm' count=stressPool}}</p>
+  <div class="form-group">
+    <label>
+      <input type="checkbox" name="spendWillpower" {{#unless canSpend}}disabled{{/unless}} />
+      {{localize 'FOURSTAT.Willpower.SpendForStress'}}
+      ({{willpower}} {{localize 'FOURSTAT.Willpower.Available'}})
+    </label>
+    {{#unless canSpend}}
+    <small>{{localize 'FOURSTAT.Stress.WillpowerCannotSpend'}}</small>
+    {{/unless}}
+  </div>
+</form>

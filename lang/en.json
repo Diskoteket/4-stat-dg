@@ -57,6 +57,7 @@
   "FOURSTAT.Willpower.Spend": "Spend 1 Willpower",
   "FOURSTAT.Willpower.Restore": "Restore 1 Willpower",
   "FOURSTAT.Willpower.SpendForBonus": "Spend 1 Willpower for +1 die",
+  "FOURSTAT.Willpower.SpendForStress": "Spend 1 Willpower to remove 1 Stress die before rolling",
   "FOURSTAT.Willpower.Available": "available",
   "FOURSTAT.Willpower.NoneLeft": "No Willpower left.",
 
@@ -66,6 +67,7 @@
   "FOURSTAT.Stress.Roll": "Roll Stress",
   "FOURSTAT.Stress.RollFlavor": "Stress roll",
   "FOURSTAT.Stress.NoneToRoll": "No Stress dice to roll.",
+  "FOURSTAT.Stress.WillpowerCannotSpend": "Requires at least 1 Willpower and 1 temporary Stress die.",
   "FOURSTAT.Stress.Confirm": "Roll all {count} Stress dice?",
   "FOURSTAT.Stress.Apply": "Add Stress",
   "FOURSTAT.Stress.GainsPermanent": "Character gains one permanent Stress die.",

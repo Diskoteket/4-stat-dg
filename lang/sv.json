@@ -57,6 +57,7 @@
   "FOURSTAT.Willpower.Spend": "Spendera 1 Willpower",
   "FOURSTAT.Willpower.Restore": "Återfå 1 Willpower",
   "FOURSTAT.Willpower.SpendForBonus": "Spendera 1 Willpower för +1 tärning",
+  "FOURSTAT.Willpower.SpendForStress": "Spendera 1 Willpower för att ta bort 1 Stress-tärning innan slaget",
   "FOURSTAT.Willpower.Available": "tillgängliga",
   "FOURSTAT.Willpower.NoneLeft": "Ingen Willpower kvar.",
 
@@ -66,6 +67,7 @@
   "FOURSTAT.Stress.Roll": "Slå Stress",
   "FOURSTAT.Stress.RollFlavor": "Stress-slag",
   "FOURSTAT.Stress.NoneToRoll": "Inga Stress-tärningar att slå.",
+  "FOURSTAT.Stress.WillpowerCannotSpend": "Kräver minst 1 Willpower och 1 tillfällig Stress-tärning.",
   "FOURSTAT.Stress.Confirm": "Slå alla {count} Stress-tärningar?",
   "FOURSTAT.Stress.Apply": "Lägg till Stress",
   "FOURSTAT.Stress.GainsPermanent": "Karaktären får en permanent Stress-tärning.",

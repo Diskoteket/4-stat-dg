@@ -1,107 +1,76 @@
 # Releasing 4-Stat DG
 
-Foundry users install/update via this manifest URL:
-
-```
-https://github.com/Diskoteket/4-stat-dg/releases/latest/download/system.json
-```
-
-That URL resolves to whatever you publish as the **latest GitHub release**. So "releasing" = "publish a GitHub release with two files attached." That's it.
+Pushing a version tag triggers the GitHub Actions release pipeline, which builds the zip and publishes a GitHub release automatically. You only need three steps.
 
 ---
 
-## Each release — the full sequence
-
-Run these commands from the repo root (`/Users/disco/code/4-stat-dg`). Replace `0.1.0` with whatever version you're cutting.
+## Cutting a release
 
 ### 1. Bump the version in `system.json`
 
-Open `system.json`, change:
-
 ```json
-"version": "0.1.0",
+"version": "0.1.1"
 ```
 
 If you've tested on a newer Foundry build, also bump `compatibility.verified`.
 
-### 2. Commit, tag, push
+### 2. Commit and tag
 
 ```bash
 git add system.json
-git commit -m "Release v0.1.0"
-git tag v0.1.0
+git commit -m "Release v0.1.1"
+git tag v0.1.1
 git push origin main --tags
 ```
 
-### 3. Build the zip
+### 3. Watch it go
 
-```bash
-zip -r 4-stat-dg.zip . \
-  -x ".git/*" -x ".github/*" -x "*.zip" -x ".DS_Store" \
-  -x ".gitignore" -x "RELEASE.md"
-```
+GitHub Actions picks up the tag, verifies it matches `system.json`, builds `4-stat-dg.zip`, and publishes a release with both files attached. Takes about 30 seconds.
 
-Sanity-check that `system.json` is at the **root** of the zip (not inside a folder):
-
-```bash
-unzip -l 4-stat-dg.zip | head
-```
-
-You should see `system.json` listed without any directory prefix. If you see `4-stat-dg/system.json`, the install will fail — re-zip from inside the repo, not from its parent directory.
-
-### 4. Publish the GitHub release
-
-In a browser:
-
-1. Go to <https://github.com/Diskoteket/4-stat-dg/releases/new>
-2. **Choose a tag:** select `v0.1.0` (the tag you just pushed)
-3. **Release title:** `v0.1.0`
-4. Release notes: short summary of what changed
-5. **Attach binaries** (drag & drop into the "Attach binaries" zone):
-   - `system.json` — the manifest from the repo root
-   - `4-stat-dg.zip` — the zip you just built
-6. Leave "Set as the latest release" checked
-7. Click **Publish release**
-
-### 5. Verify
-
-Open both URLs in a browser — each should download the file you just attached:
-
-- <https://github.com/Diskoteket/4-stat-dg/releases/latest/download/system.json>
-- <https://github.com/Diskoteket/4-stat-dg/releases/latest/download/4-stat-dg.zip>
-
-Then in Foundry:
-
-- **Fresh install:** Setup → Game Systems → Install System → paste the manifest URL → Install
-- **Update existing install:** Setup → Game Systems → the "Update" button should appear next to 4-Stat DG within ~30 seconds
-
-If install fails, the most common causes are:
-- `system.json` not attached to the release (Foundry shows "could not fetch manifest")
-- Zip has the system folder nested inside (Foundry shows "invalid system" or won't show your sheets)
-- `version` field in `system.json` matches what's already installed → no update prompt; bump it
+Check progress at:
+`https://github.com/Diskoteket/4-stat-dg/actions`
 
 ---
 
-## First release only
+## Verify the release
 
-You've already pushed the repo and the remote is set. So for the very first release (`v0.1.0`) the only setup task is making sure `system.json` has the right URLs — and it does (`Diskoteket/4-stat-dg`). Just run steps 1–5 above.
+After the action completes, confirm both URLs serve the files:
 
-If you want a license to show in Foundry's package browser later, drop a `LICENSE` file at the repo root and add `"license": "LICENSE"` back to `system.json`.
+- `https://github.com/Diskoteket/4-stat-dg/releases/latest/download/system.json`
+- `https://github.com/Diskoteket/4-stat-dg/releases/latest/download/4-stat-dg.zip`
+
+Then in Foundry → Setup → Install System → paste the manifest URL to install, or hit **Update** if it's already installed.
+
+---
+
+## If the action fails
+
+**"Tag does not match system.json version"** — the tag you pushed (`v0.1.1`) doesn't match the `version` field in `system.json`. Fix `system.json`, amend the commit, delete and re-push the tag:
+
+```bash
+# fix system.json, then:
+git add system.json
+git commit --amend --no-edit
+git tag -d v0.1.1
+git tag v0.1.1
+git push origin main --tags --force
+```
+
+**Action passed but Foundry shows no update** — the `version` in `system.json` must be higher than what's currently installed. Foundry only prompts for updates when the manifest version is newer.
 
 ---
 
 ## Local testing without releasing
 
-Symlink the repo into Foundry's systems directory so you can iterate without zipping:
+Symlink the repo into Foundry's systems directory:
 
 ```bash
 ln -s "$(pwd)" "$HOME/Library/Application Support/FoundryVTT/Data/systems/4-stat-dg"
 ```
 
-Restart Foundry. The system shows up in the systems list. After editing JS/templates, refresh the world with F5 to reload.
-
-To remove the symlink later:
+Restart Foundry. After editing JS or templates, refresh the world with F5.
 
 ```bash
+# remove when done
 rm "$HOME/Library/Application Support/FoundryVTT/Data/systems/4-stat-dg"
 ```

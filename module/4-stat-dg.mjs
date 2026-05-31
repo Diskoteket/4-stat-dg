@@ -56,6 +56,7 @@ Hooks.once("init", () => {
     "systems/4-stat-dg/templates/item/trait-sheet.hbs",
     "systems/4-stat-dg/templates/item/bond-sheet.hbs",
     "systems/4-stat-dg/templates/dialog/stat-roll-dialog.hbs",
+    "systems/4-stat-dg/templates/dialog/stress-roll-dialog.hbs",
     "systems/4-stat-dg/templates/dialog/bond-repair-dialog.hbs",
     "systems/4-stat-dg/templates/dialog/protect-with-bond-dialog.hbs",
     "systems/4-stat-dg/templates/chat/stat-roll.hbs",
