@@ -1,119 +1,107 @@
 # Releasing 4-Stat DG
 
-This walks through cutting a release so that Foundry users can install or auto-update via the manifest URL:
+Foundry users install/update via this manifest URL:
 
 ```
 https://github.com/Diskoteket/4-stat-dg/releases/latest/download/system.json
 ```
 
-> Both `manifest` and `download` in `system.json` already point to `releases/latest/download/...`. That means every new GitHub release becomes the latest version Foundry sees — no further edits needed once those URLs are correct.
+That URL resolves to whatever you publish as the **latest GitHub release**. So "releasing" = "publish a GitHub release with two files attached." That's it.
 
 ---
 
-## One-time setup
+## Each release — the full sequence
 
-1. Push this repo to GitHub at the URL referenced in `system.json` (currently `https://github.com/Diskoteket/4-stat-dg`). If you use a different repo URL, edit the `url`, `manifest`, `download`, and `bugs` fields in `system.json` before tagging anything.
-2. (Optional) Decide on a license and add a `LICENSE` file. If you want Foundry's package browser to show it, add `"license": "LICENSE"` back to `system.json`.
+Run these commands from the repo root (`/Users/disco/code/4-stat-dg`). Replace `0.1.0` with whatever version you're cutting.
 
----
+### 1. Bump the version in `system.json`
 
-## Cutting a release
-
-For each new version:
-
-### 1. Bump the version
-
-Edit `system.json` and update `"version"` (semver, e.g. `0.1.0` → `0.1.1`).
-
-If you're targeting a newer Foundry build, also update `compatibility.verified`:
+Open `system.json`, change:
 
 ```json
-"compatibility": {
-  "minimum": "12",
-  "verified": "12",
-  "maximum": "13"
-}
+"version": "0.1.0",
 ```
 
-### 2. Commit and tag
+If you've tested on a newer Foundry build, also bump `compatibility.verified`.
+
+### 2. Commit, tag, push
 
 ```bash
 git add system.json
-git commit -m "Release v0.1.1"
-git tag v0.1.1
+git commit -m "Release v0.1.0"
+git tag v0.1.0
 git push origin main --tags
 ```
 
 ### 3. Build the zip
 
-From the repo root, package everything **except** the dev-only files:
-
 ```bash
 zip -r 4-stat-dg.zip . \
-  -x ".git/*" -x ".github/*" -x "*.zip" -x ".DS_Store" -x ".gitignore" \
-  -x "RELEASE.md"
+  -x ".git/*" -x ".github/*" -x "*.zip" -x ".DS_Store" \
+  -x ".gitignore" -x "RELEASE.md"
 ```
 
-The zip **must** contain `system.json` at its root (not nested in a folder). Verify:
+Sanity-check that `system.json` is at the **root** of the zip (not inside a folder):
 
 ```bash
 unzip -l 4-stat-dg.zip | head
 ```
 
-You should see `system.json` listed without a directory prefix.
+You should see `system.json` listed without any directory prefix. If you see `4-stat-dg/system.json`, the install will fail — re-zip from inside the repo, not from its parent directory.
 
-### 4. Create the GitHub release
+### 4. Publish the GitHub release
 
-Via the GitHub web UI:
+In a browser:
 
-1. Go to **Releases** → **Draft a new release**
-2. Choose the tag you just pushed (e.g. `v0.1.1`)
-3. Title: `v0.1.1`
-4. **Attach two files:**
-   - `system.json` (the manifest itself — Foundry reads this first)
-   - `4-stat-dg.zip` (the download)
-5. Publish
-
-Or via `gh`:
-
-```bash
-gh release create v0.1.1 \
-  --title "v0.1.1" \
-  --notes "Release notes here" \
-  system.json 4-stat-dg.zip
-```
+1. Go to <https://github.com/Diskoteket/4-stat-dg/releases/new>
+2. **Choose a tag:** select `v0.1.0` (the tag you just pushed)
+3. **Release title:** `v0.1.0`
+4. Release notes: short summary of what changed
+5. **Attach binaries** (drag & drop into the "Attach binaries" zone):
+   - `system.json` — the manifest from the repo root
+   - `4-stat-dg.zip` — the zip you just built
+6. Leave "Set as the latest release" checked
+7. Click **Publish release**
 
 ### 5. Verify
 
-After publishing, hit both URLs in a browser — they should serve the latest files:
+Open both URLs in a browser — each should download the file you just attached:
 
-- `https://github.com/Diskoteket/4-stat-dg/releases/latest/download/system.json`
-- `https://github.com/Diskoteket/4-stat-dg/releases/latest/download/4-stat-dg.zip`
+- <https://github.com/Diskoteket/4-stat-dg/releases/latest/download/system.json>
+- <https://github.com/Diskoteket/4-stat-dg/releases/latest/download/4-stat-dg.zip>
 
-Then in Foundry → Setup → Install System → paste the manifest URL. If you already have it installed, the **Update** button should appear and pull the new version.
+Then in Foundry:
+
+- **Fresh install:** Setup → Game Systems → Install System → paste the manifest URL → Install
+- **Update existing install:** Setup → Game Systems → the "Update" button should appear next to 4-Stat DG within ~30 seconds
+
+If install fails, the most common causes are:
+- `system.json` not attached to the release (Foundry shows "could not fetch manifest")
+- Zip has the system folder nested inside (Foundry shows "invalid system" or won't show your sheets)
+- `version` field in `system.json` matches what's already installed → no update prompt; bump it
 
 ---
 
-## Why both `system.json` and the zip
+## First release only
 
-- **`system.json`** is what Foundry hits first via the manifest URL. It reads the `version` field and the `download` URL.
-- **The zip** is the actual payload Foundry downloads and unpacks. It must include a `system.json` at its root for installation to succeed.
+You've already pushed the repo and the remote is set. So for the very first release (`v0.1.0`) the only setup task is making sure `system.json` has the right URLs — and it does (`Diskoteket/4-stat-dg`). Just run steps 1–5 above.
 
-If you ever forget to upload one of them, installs will fail silently with "could not fetch manifest" or "invalid system" errors.
+If you want a license to show in Foundry's package browser later, drop a `LICENSE` file at the repo root and add `"license": "LICENSE"` back to `system.json`.
 
 ---
 
-## Local development
+## Local testing without releasing
 
-To test the system locally without publishing:
+Symlink the repo into Foundry's systems directory so you can iterate without zipping:
 
-1. Symlink (or copy) the repo into your Foundry `Data/systems/` directory:
+```bash
+ln -s "$(pwd)" "$HOME/Library/Application Support/FoundryVTT/Data/systems/4-stat-dg"
+```
 
-   ```bash
-   ln -s "$(pwd)" "$HOME/Library/Application Support/FoundryVTT/Data/systems/4-stat-dg"
-   ```
+Restart Foundry. The system shows up in the systems list. After editing JS/templates, refresh the world with F5 to reload.
 
-   (Adjust path per platform — Linux uses `~/.local/share/FoundryVTT/Data/systems/`.)
+To remove the symlink later:
 
-2. Restart Foundry. The system should appear in the **Game Systems** list.
-3. Create a world using **4-Stat DG**, launch it, and iterate. Foundry watches files but you'll need to refresh (F5) after editing modules/templates.
+```bash
+rm "$HOME/Library/Application Support/FoundryVTT/Data/systems/4-stat-dg"
+```
