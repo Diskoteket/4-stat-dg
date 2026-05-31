@@ -2,7 +2,7 @@
   "id": "4-stat-dg",
   "title": "4-Stat DG",
   "description": "Ett lättviktigt rollspelssystem om kompetens, stress och relationer. Karaktärer dör sällan av yttre hot — de bryts ner inifrån.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "compatibility": {
     "minimum": "12",
     "verified": "12",
@@ -18,6 +18,7 @@
     "module/4-stat-dg.mjs"
   ],
   "styles": [
+    "https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap",
     "styles/4-stat-dg.css"
   ],
   "languages": [

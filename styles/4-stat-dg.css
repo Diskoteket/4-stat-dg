@@ -1,29 +1,31 @@
 /* 4-Stat DG — sheet & chat styles */
 
-/* ── Dark theme palette ─────────────────────────────────────────────── */
+/* ── Terminal green palette ─────────────────────────────────────────── */
 
 .fourstat.sheet {
-  --bg:              #16161e;
-  --bg-surface:      #1f1f2e;
-  --bg-raised:       #28283a;
-  --bg-input:        #12121a;
-  --border:          #38384e;
-  --border-light:    #2a2a3c;
-  --text:            #ddd8d0;
-  --text-muted:      #7a7a96;
-  --text-label:      #9090b0;
-  --text-input:      #e0dbd4;
-  --accent:          #c04040;
-  --accent-dark:     #7a1414;
-  --accent-glow:     rgba(192, 64, 64, 0.18);
-  --positive:        #3a8a4a;
-  --bond:            #2e4e7a;
-  --bond-text:       #7aacdc;
-  --willpower:       #6a5030;
-  --willpower-text:  #d4a060;
-  --tab-active:      #c04040;
+  --bg:              #080c08;
+  --bg-surface:      #0d120d;
+  --bg-raised:       #111a11;
+  --bg-input:        #060906;
+  --border:          #1c3a1c;
+  --border-light:    #122612;
+  --text:            #90c890;
+  --text-muted:      #3a6a3a;
+  --text-label:      #52a052;
+  --text-input:      #b4deb4;
+  --accent:          #c03030;
+  --accent-dark:     #7a1010;
+  --accent-glow:     rgba(192, 48, 48, 0.18);
+  --positive:        #40c040;
+  --bond:            #1a3a1a;
+  --bond-text:       #70c070;
+  --willpower:       #2a3a10;
+  --willpower-text:  #a8cc40;
+  --tab-active:      #40c040;
+  --glow:            0 0 6px rgba(64, 192, 64, 0.25);
+  --glow-strong:     0 0 10px rgba(64, 192, 64, 0.4);
 
-  font-family: "Signika", sans-serif;
+  font-family: "Share Tech Mono", "Roboto Mono", "Courier New", monospace;
   background: var(--bg);
   color: var(--text);
 }
@@ -58,7 +60,8 @@
 
 .fourstat input:focus,
 .fourstat select:focus {
-  border-color: var(--accent);
+  border-color: var(--positive);
+  box-shadow: var(--glow);
   outline: none;
 }
 
@@ -67,10 +70,11 @@
   color: var(--text-label);
   font-size: 0.8em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-bottom: 1px solid var(--border-light);
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 3px;
   margin: 10px 0 6px;
+  text-shadow: var(--glow);
 }
 
 .fourstat button {
@@ -130,7 +134,9 @@
 }
 
 .fourstat .charname input:focus {
-  border-bottom-color: var(--accent);
+  border-bottom-color: var(--positive);
+  box-shadow: none;
+  text-shadow: var(--glow);
   outline: none;
 }
 
@@ -291,9 +297,10 @@
 }
 
 .fourstat .sheet-tabs .item.active {
-  color: var(--text);
+  color: var(--positive);
   border-bottom-color: var(--tab-active);
   font-weight: 700;
+  text-shadow: var(--glow);
 }
 
 /* ── Stats ───────────────────────────────────────────────────────────── */
@@ -318,7 +325,8 @@
 }
 
 .fourstat .stat:hover {
-  border-color: var(--accent);
+  border-color: var(--positive);
+  box-shadow: var(--glow);
 }
 
 .fourstat .stat-roll {
@@ -345,7 +353,8 @@
   font-size: 2em;
   font-weight: 700;
   line-height: 1;
-  color: var(--text);
+  color: var(--positive);
+  text-shadow: var(--glow-strong);
 }
 
 .fourstat .stat input[type="number"] {
