@@ -1,22 +1,112 @@
 /* 4-Stat DG — sheet & chat styles */
 
+/* ── Dark theme palette ─────────────────────────────────────────────── */
+
 .fourstat.sheet {
+  --bg:              #16161e;
+  --bg-surface:      #1f1f2e;
+  --bg-raised:       #28283a;
+  --bg-input:        #12121a;
+  --border:          #38384e;
+  --border-light:    #2a2a3c;
+  --text:            #ddd8d0;
+  --text-muted:      #7a7a96;
+  --text-label:      #9090b0;
+  --text-input:      #e0dbd4;
+  --accent:          #c04040;
+  --accent-dark:     #7a1414;
+  --accent-glow:     rgba(192, 64, 64, 0.18);
+  --positive:        #3a8a4a;
+  --bond:            #2e4e7a;
+  --bond-text:       #7aacdc;
+  --willpower:       #6a5030;
+  --willpower-text:  #d4a060;
+  --tab-active:      #c04040;
+
   font-family: "Signika", sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
+
+/* ── Window chrome ──────────────────────────────────────────────────── */
+
+.fourstat.sheet .window-content {
+  background: var(--bg);
+  color: var(--text);
+  padding: 8px;
+}
+
+.fourstat.sheet .window-header {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.fourstat.sheet .window-header .window-title {
+  color: var(--text);
+}
+
+/* ── Global element resets inside the sheet ─────────────────────────── */
+
+.fourstat input,
+.fourstat select,
+.fourstat textarea {
+  background: var(--bg-input);
+  color: var(--text-input);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.fourstat input:focus,
+.fourstat select:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.fourstat h2,
+.fourstat h3 {
+  color: var(--text-label);
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 3px;
+  margin: 10px 0 6px;
+}
+
+.fourstat button {
+  background: var(--bg-raised);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 3px 8px;
+  font-size: 0.85em;
+}
+
+.fourstat button:hover {
+  background: var(--border);
+  border-color: var(--accent);
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
 
 .fourstat .sheet-header {
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  margin-bottom: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .fourstat .sheet-header .profile-img {
-  flex: 0 0 96px;
-  width: 96px;
-  height: 96px;
+  flex: 0 0 90px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
-  border: 1px solid #555;
+  border: 2px solid var(--border);
   border-radius: 6px;
 }
 
@@ -25,41 +115,81 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-
-.fourstat .charname input,
-.fourstat .concept input {
-  width: 100%;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid #888;
-  font-size: 1.1em;
+  min-width: 0;
 }
 
 .fourstat .charname input {
-  font-size: 1.5em;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.4em;
   font-weight: 700;
+  padding: 2px 0;
 }
+
+.fourstat .charname input:focus {
+  border-bottom-color: var(--accent);
+  outline: none;
+}
+
+.fourstat .concept {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85em;
+}
+
+.fourstat .concept label {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.fourstat .concept input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-size: 1em;
+}
+
+/* ── Resources (Willpower + Stress) ─────────────────────────────────── */
 
 .fourstat .resource-row {
   display: grid;
-  grid-template-columns: minmax(120px, 1fr) 2fr;
-  gap: 12px;
+  grid-template-columns: minmax(130px, 1fr) 2fr;
+  gap: 8px;
 }
 
 .fourstat .resource {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid #ccc;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 6px 8px;
 }
 
-.fourstat .resource label {
-  font-weight: 700;
-  font-size: 0.85em;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+.fourstat .resource.willpower {
+  border-color: var(--willpower);
 }
+
+.fourstat .resource.stress {
+  border-color: var(--accent-dark);
+}
+
+.fourstat .resource label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-label);
+  margin-bottom: 4px;
+}
+
+.fourstat .resource.willpower label { color: var(--willpower-text); }
+.fourstat .resource.stress    label { color: var(--accent); }
 
 .fourstat .resource-value {
   display: flex;
@@ -68,69 +198,111 @@
 }
 
 .fourstat .resource-value input[type="number"] {
-  width: 48px;
+  width: 44px;
   text-align: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.fourstat .resource-value button {
+  width: 20px;
+  height: 20px;
+  min-width: unset;
+  padding: 0;
+  line-height: 1;
+  font-size: 1em;
+  border-radius: 3px;
+  background: var(--bg-surface);
+  border-color: var(--border-light);
+}
+
+.fourstat .resource-value span {
+  color: var(--text-muted);
 }
 
 .fourstat .stress-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px;
+  gap: 5px;
+  margin-bottom: 4px;
 }
 
 .fourstat .stress-cell {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  background: rgba(0, 0, 0, 0.04);
+  gap: 3px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
   border-radius: 4px;
   padding: 4px;
 }
 
+.fourstat .stress-cell .resource-value {
+  justify-content: center;
+}
+
 .fourstat .stress-cell-label {
-  font-size: 0.75em;
-  color: #555;
+  font-size: 0.7em;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .fourstat .stress-roll-btn {
   width: 100%;
-  margin-top: 6px;
-  background: #4a0d0d;
-  color: #fdecec;
-  border: 0;
+  background: var(--accent-dark);
+  color: #f0d8d8;
+  border: 1px solid var(--accent);
   padding: 4px 8px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 0.85em;
+  transition: background 0.15s;
 }
 .fourstat .stress-roll-btn:hover {
-  background: #6a1414;
+  background: var(--accent);
 }
+
+/* ── Tabs ────────────────────────────────────────────────────────────── */
 
 .fourstat .sheet-tabs {
   display: flex;
-  gap: 8px;
-  border-bottom: 2px solid #555;
-  margin-bottom: 8px;
+  gap: 2px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 10px;
 }
 
 .fourstat .sheet-tabs .item {
-  padding: 4px 10px;
+  padding: 5px 12px;
   cursor: pointer;
+  color: var(--text-muted);
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   border-bottom: 2px solid transparent;
-  margin-bottom: -2px;
+  margin-bottom: -1px;
+  transition: color 0.15s;
 }
+
+.fourstat .sheet-tabs .item:hover {
+  color: var(--text);
+}
+
 .fourstat .sheet-tabs .item.active {
-  border-color: #4a0d0d;
+  color: var(--text);
+  border-bottom-color: var(--tab-active);
   font-weight: 700;
 }
+
+/* ── Stats ───────────────────────────────────────────────────────────── */
 
 .fourstat .stat-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
+  margin-bottom: 4px;
 }
 
 .fourstat .stat {
@@ -138,51 +310,74 @@
   flex-direction: column;
   align-items: stretch;
   gap: 4px;
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid #bbb;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 6px;
+  padding: 8px 6px;
+  transition: border-color 0.15s;
+}
+
+.fourstat .stat:hover {
+  border-color: var(--accent);
 }
 
 .fourstat .stat-roll {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   border: 0;
   background: transparent;
   cursor: pointer;
   padding: 4px;
+  color: var(--text);
 }
 
 .fourstat .stat-label {
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.8em;
-  letter-spacing: 0.06em;
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  color: var(--text-label);
 }
 
 .fourstat .stat-value {
-  font-size: 1.8em;
+  font-size: 2em;
   font-weight: 700;
   line-height: 1;
+  color: var(--text);
 }
 
 .fourstat .stat input[type="number"] {
   width: 100%;
   text-align: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-size: 0.8em;
 }
+
+/* ── Section headers ─────────────────────────────────────────────────── */
 
 .fourstat .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+.fourstat .section-header h2 {
+  margin: 0;
+  border: none;
+  padding: 0;
 }
 
 .fourstat .section-actions button {
   margin-left: 4px;
 }
+
+/* ── Traits ──────────────────────────────────────────────────────────── */
 
 .fourstat .trait-columns {
   display: grid;
@@ -190,46 +385,251 @@
   gap: 12px;
 }
 
-.fourstat .trait-list,
+.fourstat .trait-list {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+}
+
+.fourstat .trait-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.9em;
+}
+
+.fourstat .trait-row:last-child {
+  border-bottom: none;
+}
+
+.fourstat .trait-row .trait-actions {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.fourstat .trait-row:hover .trait-actions {
+  opacity: 1;
+}
+
+.fourstat .trait-row .trait-actions button {
+  width: 18px;
+  height: 18px;
+  min-width: unset;
+  padding: 0;
+  font-size: 0.7em;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+}
+
+.fourstat .trait-row .trait-actions button:hover {
+  color: var(--accent);
+  background: transparent;
+  border: none;
+}
+
+.fourstat .trait-row.trait-negative .trait-name {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* ── Bonds ───────────────────────────────────────────────────────────── */
+
 .fourstat .bond-list {
   list-style: none;
   padding: 0;
   margin: 4px 0;
 }
 
-.fourstat .trait-row,
 .fourstat .bond-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  padding: 4px 6px;
-  border-bottom: 1px solid #ddd;
-}
-
-.fourstat .trait-row.trait-negative .trait-name {
-  color: #883333;
-  font-style: italic;
-}
-
-.fourstat .bond-row {
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid #bbb;
+  gap: 8px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--bond);
   border-radius: 4px;
   margin-bottom: 4px;
   padding: 6px 8px;
 }
 
+.fourstat .bond-name {
+  flex: 1;
+  font-size: 0.95em;
+}
+
+.fourstat .bond-value {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.fourstat .bond-value label {
+  color: var(--text-muted);
+}
+
 .fourstat .bond-value input {
-  width: 48px;
+  width: 40px;
   text-align: center;
 }
+
+.fourstat .bond-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.fourstat .bond-row:hover .bond-actions {
+  opacity: 1;
+}
+
+.fourstat .bond-actions button {
+  padding: 2px 6px;
+  font-size: 0.75em;
+}
+
+.fourstat .bond-actions button[data-action="edit-item"],
+.fourstat .bond-actions button[data-action="delete-item"] {
+  width: 20px;
+  height: 20px;
+  min-width: unset;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+}
+
+.fourstat .bond-actions button[data-action="edit-item"]:hover,
+.fourstat .bond-actions button[data-action="delete-item"]:hover {
+  color: var(--accent);
+  background: transparent;
+  border: none;
+}
+
+/* ── Permanent damage list ───────────────────────────────────────────── */
+
+.fourstat .damage-list {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+}
+
+.fourstat .damage-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+}
+
+.fourstat .damage-row.severity-catastrophic {
+  border-left-color: #ff4444;
+  background: rgba(74, 13, 13, 0.25);
+}
+
+.fourstat .damage-badge {
+  flex: 0 0 auto;
+  font-size: 0.65em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #f0d8d8;
+  background: var(--accent-dark);
+  padding: 2px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.fourstat .damage-row.severity-catastrophic .damage-badge {
+  background: #7a0000;
+  color: #ffc0c0;
+}
+
+.fourstat .damage-label {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text);
+  font-size: 0.9em;
+  min-width: 0;
+}
+
+.fourstat .damage-label:focus {
+  border-bottom-color: var(--accent);
+  outline: none;
+}
+
+.fourstat .damage-row button[data-action="remove-damage"] {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  min-width: unset;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  font-size: 0.7em;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+}
+
+.fourstat .damage-row:hover button[data-action="remove-damage"] {
+  opacity: 1;
+}
+
+.fourstat .damage-row button[data-action="remove-damage"]:hover {
+  color: var(--accent);
+  background: transparent;
+  border: none;
+}
+
+.fourstat .damage-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.85em;
+  margin: 4px 6px;
+}
+
+/* ── Biography ───────────────────────────────────────────────────────── */
 
 .fourstat .biography {
   margin-top: 8px;
 }
 
-/* Chat cards */
+/* ── Naming dialog hint ──────────────────────────────────────────────── */
+
+.damage-dialog-hint {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+.damage-dialog-hint.severity-permanent {
+  background: rgba(192, 64, 64, 0.12);
+  border-left: 3px solid #c04040;
+}
+.damage-dialog-hint.severity-catastrophic {
+  background: rgba(122, 0, 0, 0.2);
+  border-left: 3px solid #ff4444;
+}
+
+/* ── Chat cards ──────────────────────────────────────────────────────── */
 
 .fourstat-chat {
   border: 1px solid #555;
@@ -349,102 +749,7 @@
 .fourstat-chat.stress-roll.severity-2 { border-color: #a02020; }
 .fourstat-chat.stress-roll.severity-3 { border-color: #4a0d0d; background: #fbe7e7; }
 
-/* Permanent damage list */
-
-.fourstat .damage-list {
-  list-style: none;
-  padding: 0;
-  margin: 4px 0;
-}
-
-.fourstat .damage-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 6px;
-  border-radius: 4px;
-  margin-bottom: 4px;
-  background: rgba(100, 20, 20, 0.06);
-  border-left: 3px solid #a02020;
-}
-
-.fourstat .damage-row.severity-catastrophic {
-  background: rgba(74, 13, 13, 0.12);
-  border-left-color: #4a0d0d;
-}
-
-.fourstat .damage-badge {
-  flex: 0 0 auto;
-  font-size: 0.7em;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #fff;
-  background: #a02020;
-  padding: 2px 5px;
-  border-radius: 3px;
-  white-space: nowrap;
-}
-
-.fourstat .damage-row.severity-catastrophic .damage-badge {
-  background: #4a0d0d;
-}
-
-.fourstat .damage-label {
-  flex: 1;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px dashed #aaa;
-  font-size: 0.95em;
-}
-
-.fourstat .damage-row button[data-action="remove-damage"] {
-  flex: 0 0 auto;
-  width: 16px;
-  height: 16px;
-  min-width: unset;
-  padding: 0;
-  margin: 0;
-  line-height: 1;
-  font-size: 0.7em;
-  background: transparent;
-  border: none;
-  color: #aaa;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.15s, color 0.15s;
-}
-
-.fourstat .damage-row:hover button[data-action="remove-damage"] {
-  opacity: 1;
-}
-
-.fourstat .damage-row button[data-action="remove-damage"]:hover {
-  color: #883333;
-}
-
-.fourstat .damage-empty {
-  color: #888;
-  font-style: italic;
-  font-size: 0.9em;
-  margin: 4px 6px;
-}
-
-/* Naming dialog hint */
-.damage-dialog-hint {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-style: italic;
-  margin-bottom: 8px;
-}
-.damage-dialog-hint.severity-permanent {
-  background: rgba(160, 32, 32, 0.1);
-  border-left: 3px solid #a02020;
-}
-.damage-dialog-hint.severity-catastrophic {
-  background: rgba(74, 13, 13, 0.15);
-  border-left: 3px solid #4a0d0d;
-}
+/* ── Dialog helpers ──────────────────────────────────────────────────── */
 
 .bond-repair-summary {
   list-style: none;
