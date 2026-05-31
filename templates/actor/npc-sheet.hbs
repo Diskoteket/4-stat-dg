@@ -31,7 +31,13 @@
 
     <section class="biography">
       <h2>{{localize 'FOURSTAT.NPC.Notes'}}</h2>
-      {{editor actor.system.notes target="system.notes" button=false editable=editable}}
+      {{#if editable}}
+      <prose-mirror name="system.notes"
+                    value="{{{actor.system.notes}}}"
+                    document-uuid="{{actor.uuid}}"></prose-mirror>
+      {{else}}
+      <div class="editor-content">{{{notesHTML}}}</div>
+      {{/if}}
     </section>
   </section>
 </form>

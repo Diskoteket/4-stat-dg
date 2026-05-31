@@ -169,7 +169,13 @@
     <div class="tab" data-tab="biography">
       <section class="biography">
         <h2>{{localize 'FOURSTAT.Section.Biography'}}</h2>
-        {{editor system.details.biography target="system.details.biography" button=false editable=editable}}
+        {{#if editable}}
+        <prose-mirror name="system.details.biography"
+                      value="{{{system.details.biography}}}"
+                      document-uuid="{{actor.uuid}}"></prose-mirror>
+        {{else}}
+        <div class="editor-content">{{{biographyHTML}}}</div>
+        {{/if}}
       </section>
     </div>
 

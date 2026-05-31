@@ -31,6 +31,10 @@ export class CharacterSheet extends ActorSheet {
     context.bonds = this.actor.bonds;
     context.stressPool = this.actor.stressPool;
     context.permanentDamage = system.permanentDamage ?? [];
+    context.biographyHTML = await TextEditor.enrichHTML(
+      system.details?.biography ?? "",
+      { secrets: this.actor.isOwner, relativeTo: this.actor }
+    );
     return context;
   }
 

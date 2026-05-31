@@ -13,6 +13,10 @@ export class TraitSheet extends ItemSheet {
   async getData(options) {
     const context = await super.getData(options);
     context.config = FOURSTAT;
+    context.descriptionHTML = await TextEditor.enrichHTML(
+      context.item.system.description ?? "",
+      { secrets: this.item.isOwner, relativeTo: this.item }
+    );
     return context;
   }
 }
@@ -31,6 +35,10 @@ export class BondSheet extends ItemSheet {
     const context = await super.getData(options);
     context.config = FOURSTAT;
     context.threshold = context.item.system.repairThreshold;
+    context.descriptionHTML = await TextEditor.enrichHTML(
+      context.item.system.description ?? "",
+      { secrets: this.item.isOwner, relativeTo: this.item }
+    );
     return context;
   }
 }

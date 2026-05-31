@@ -18,6 +18,10 @@ export class NpcSheet extends ActorSheet {
       label,
       value: context.actor.system.stats?.[key]?.value ?? 0
     }));
+    context.notesHTML = await TextEditor.enrichHTML(
+      context.actor.system.notes ?? "",
+      { secrets: this.actor.isOwner, relativeTo: this.actor }
+    );
     return context;
   }
 

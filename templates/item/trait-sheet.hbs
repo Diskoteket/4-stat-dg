@@ -15,7 +15,13 @@
 
     <div class="form-group">
       <label>{{localize 'FOURSTAT.Description'}}</label>
-      {{editor item.system.description target="system.description" button=true editable=editable}}
+      {{#if editable}}
+      <prose-mirror name="system.description"
+                    value="{{{item.system.description}}}"
+                    document-uuid="{{item.uuid}}"></prose-mirror>
+      {{else}}
+      <div class="editor-content">{{{descriptionHTML}}}</div>
+      {{/if}}
     </div>
   </section>
 </form>
