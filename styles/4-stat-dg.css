@@ -398,6 +398,31 @@
   font-size: 0.95em;
 }
 
+.fourstat .damage-row button[data-action="remove-damage"] {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  min-width: unset;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  font-size: 0.7em;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+}
+
+.fourstat .damage-row:hover button[data-action="remove-damage"] {
+  opacity: 1;
+}
+
+.fourstat .damage-row button[data-action="remove-damage"]:hover {
+  color: #883333;
+}
+
 .fourstat .damage-empty {
   color: #888;
   font-style: italic;
