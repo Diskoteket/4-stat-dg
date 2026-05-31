@@ -18,7 +18,6 @@ export class NpcSheet extends ActorSheet {
       label,
       value: context.actor.system.stats?.[key]?.value ?? 0
     }));
-    context.notesHTML = await TextEditor.enrichHTML(context.actor.system.notes ?? "", { async: true });
     return context;
   }
 
